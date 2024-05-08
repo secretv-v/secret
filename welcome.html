@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://scontent.fmnl14-1.fna.fbcdn.net/v/t39.30808-6/429824424_1455932745280587_1131347136124379127_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFGaQn32T-2UIqo_tTTQ_OosKe1V5tquHKwp7VXm2q4cmHmCSxxMw4Qb-si0JpTOcmaDF9V3_DXm6dByPwFqBrr&_nc_ohc=L7yx7o_gTSMQ7kNvgGKGitQ&_nc_ht=scontent.fmnl14-1.fna&oh=00_AfD9qq-VfvRs9NmuuehWT_1yZducSEUV6V_Xz_dn1e6new&oe=6640AAC8');
+            background-size: 100% auto; /* Set the width to 50% of the viewport width and auto height */
+            background-position: center;
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        .bubble {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            max-width: 80%;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        #username {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble" onclick="changeBackground()">Hi! <span id="username"></span> I hope you have a nice day! ^^</div>
+
+    <script>
+        var firstImage = 'https://scontent.fmnl14-1.fna.fbcdn.net/v/t39.30808-6/429824424_1455932745280587_1131347136124379127_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFGaQn32T-2UIqo_tTTQ_OosKe1V5tquHKwp7VXm2q4cmHmCSxxMw4Qb-si0JpTOcmaDF9V3_DXm6dByPwFqBrr&_nc_ohc=L7yx7o_gTSMQ7kNvgGKGitQ&_nc_ht=scontent.fmnl14-1.fna&oh=00_AfD9qq-VfvRs9NmuuehWT_1yZducSEUV6V_Xz_dn1e6new&oe=6640AAC8';
+        var secondImage = 'https://scontent.fmnl14-1.fna.fbcdn.net/v/t39.30808-6/440186383_1484557869084741_8352608505783294821_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGs-1bX_dWUBvwP2STcnHVeVH_vcIC9dotUf-9wgL12ix8RXkcVvzdDyI_h5nrv1o6hTCRMpEjuib-mGyk6Y2-p&_nc_ohc=6RLrPzy_rNgQ7kNvgGBJMvs&_nc_ht=scontent.fmnl14-1.fna&oh=00_AfBL53g1qu_GWDB7GP7dqicMBI3bsIUWs2w-sWelxi6r_w&oe=6640AF51';
+
+        function getUsername() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var username = urlParams.get('username');
+            document.getElementById("username").textContent = username;
+        }
+
+        function changeBackground() {
+            var currentBackground = document.body.style.backgroundImage;
+            if (currentBackground === 'url("' + firstImage + '")') {
+                document.body.style.backgroundImage = 'url("' + secondImage + '")';
+            } else {
+                document.body.style.backgroundImage = 'url("' + firstImage + '")';
+            }
+        }
+
+        window.onload = getUsername;
+    </script>
+</body>
+</html>
